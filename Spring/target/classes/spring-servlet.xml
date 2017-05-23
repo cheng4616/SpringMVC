@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-4.2.xsd
+http://www.springframework.org/schema/aop   
+     http://www.springframework.org/schema/aop/spring-aop-4.2.xsd   
+     http://www.springframework.org/schema/tx   
+     http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
+
+	<context:annotation-config />
+
+	<!-- 设置使用注解的类所在的jar包 -->
+	<context:component-scan base-package="controller"></context:component-scan>
+
+	<!-- 页面目录配置 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	<!-- url映射配置 -->
+	<bean id="urlMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/index.do">IndexAction</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="IndexAction" class="com.cpcn.controller.IndexAction">
+		<property name="view">
+			<value>index</value>
+		</property>
+	</bean>
+
+
+</beans>   

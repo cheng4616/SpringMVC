@@ -1,5 +1,7 @@
 package com.cpcn.service;
 
+import com.cpcn.util.ProcessResult;
+
 /**
  * 用户服务接口
  * 
@@ -8,6 +10,6 @@ package com.cpcn.service;
  */
 public interface UserService {
 
-	public boolean login(String username, String password);
+	public ProcessResult login(String username, String password);
 
 }

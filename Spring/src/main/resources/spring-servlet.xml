@@ -12,11 +12,6 @@ http://www.springframework.org/schema/aop
      http://www.springframework.org/schema/tx   
      http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
 
-	<context:annotation-config />
-
-	<!-- 设置使用注解的类所在的jar包 -->
-	<context:component-scan base-package="controller"></context:component-scan>
-
 	<!-- 页面目录配置 -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -29,13 +24,20 @@ http://www.springframework.org/schema/aop
 		<property name="mappings">
 			<props>
 				<prop key="/index.do">IndexAction</prop>
+				<prop key="/login.do">LoginController</prop>
 			</props>
 		</property>
 	</bean>
 
 	<bean id="IndexAction" class="com.cpcn.controller.IndexAction">
-		<property name="view">
-			<value>index</value>
+		<property name="login">
+			<value>login</value>
+		</property>
+	</bean>
+
+	<bean id="LoginController" class="com.cpcn.controller.LoginController">
+		<property name="login_success">
+			<value>login_success</value>
 		</property>
 	</bean>
 

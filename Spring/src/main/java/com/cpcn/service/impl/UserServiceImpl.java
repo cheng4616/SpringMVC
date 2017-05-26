@@ -25,24 +25,48 @@ public class UserServiceImpl implements UserService {
 	@Resource
 	private UserMapper usermapper;
 
-	public ProcessResult login(String username, String password) {
-		logger.debug("loginService is start" + username);
+	/**
+	 * 用户登录校验
+	 */
+	public ProcessResult login(User user) {
+		logger.debug("login check is start" + user.getUsername());
 
 		ProcessResult result = new ProcessResult(UserConstant.USER_NOT_EXIST, "user is not exist.");
-		User user = usermapper.selectByPrimaryKey(username);
+		User user1 = usermapper.selectByPrimaryKey(user.getUsername());
 		// 进行判断
-		if (null != user) {
-			if (username.equals(user.getUsername()) && password.equals(user.getPassword())) {
+		if (null != user1) {
+			if (user.getUsername().equals(user1.getUsername()) && user.getPassword().equals(user1.getPassword())) {
 				result.setResultCode(UserConstant.OPERATE_SUCCESS);
 				result.setResultMsg("login success.");
+				logger.debug("login check success.");
 				return result;
-			} else if (username.equals(user.getUsername()) && !password.equals(user.getPassword())) {
+			} else if (user.getUsername().equals(user1.getUsername()) && !user.getPassword().equals(user1.getPassword())) {
 				result.setResultCode(UserConstant.PASSWORD_ERROR);
 				result.setResultMsg("password is wrong!");
+				logger.debug("failed. reson:password is wrong.");
 				return result;
 			}
 		}
-		logger.debug("loginService is end.");
+		logger.debug("failed. reson: user is not exist.");
+		return result;
+	}
+
+	public ProcessResult addUser(User user) {
+		ProcessResult result = new ProcessResult(UserConstant.OPERATE_FAIL, "addUser failed");
+		int record;
+		User user1 = usermapper.selectByPrimaryKey(user.getUsername());
+		if (user1 != null) {
+			result.setResultCode(UserConstant.USER_EXIST);
+			result.setResultMsg("user is exist");
+			return result;
+		} else {
+			record = usermapper.insert(user);
+			if (record == 1) {
+				result.setResultCode(UserConstant.OPERATE_SUCCESS);
+				result.setResultMsg("addUser seccessfully");
+				return result;
+			}
+		}
 		return result;
 	}
 }

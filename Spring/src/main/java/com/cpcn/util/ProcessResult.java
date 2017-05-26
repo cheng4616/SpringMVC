@@ -1,5 +1,6 @@
 package com.cpcn.util;
 
+
 public class ProcessResult {
 	/** 返回结果码 */
 	private int resultCode;

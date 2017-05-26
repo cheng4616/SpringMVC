@@ -7,8 +7,7 @@
 	<display-name>Archetype Created Web Application</display-name>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>
-			classpath:applicationContext.xml</param-value>
+		<param-value>classpath:application.xml</param-value>
 	</context-param>
 
 	<!-- 编码过滤器 -->
@@ -32,7 +31,7 @@
 
 	<!-- spring mvc confige -->
 	<servlet>
-		<servlet-name>SpringMVC</servlet-name>
+		<servlet-name>spring</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
@@ -42,7 +41,7 @@
 	</servlet>
 
 	<servlet-mapping>
-		<servlet-name>SpringMVC</servlet-name>
+		<servlet-name>spring</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
 

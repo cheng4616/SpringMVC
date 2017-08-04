@@ -9,10 +9,10 @@
 	<!-- ch.qos.logback.core.ConsoleAppender 表示控制台输出 -->
 	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
 		<Encoding>UTF-8</Encoding>
-		<!-- 日志输出格式：%d表示日期时间，%thread表示线程名，%-5level：级别从左显示5个字符宽度 %logger{50} 表示logger名字最长50个字符，否则按照句点分割。 
+		<!-- 日志输出格式：%d表示日期时间，%thread表示线程名，%-5level：级别从左显示5个字符宽度 %logger{50} 表示logger名字最长80个字符，否则按照句点分割。 
 			%msg：日志消息，%n是换行符 -->
 		<layout class="ch.qos.logback.classic.PatternLayout">
-			<pattern>%date [%thread] %-5level %logger{80} - %msg%n</pattern>
+			<pattern>%date [%thread] %-5level %logger{100} - %msg%n</pattern>
 		</layout>
 	</appender>
 

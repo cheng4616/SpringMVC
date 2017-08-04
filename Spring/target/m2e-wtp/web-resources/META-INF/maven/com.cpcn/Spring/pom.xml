@@ -7,6 +7,10 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Spring Maven Webapp</name>
 	<url>http://maven.apache.org</url>
+
+	<properties>
+		<org.springframework.context>4.2.9.RELEASE</org.springframework.context>
+	</properties>
 	<dependencies>
 
 		<!-- junit -->
@@ -96,7 +100,6 @@
 			<artifactId>logback-core</artifactId>
 			<version>1.1.2</version>
 		</dependency>
-		<!-- 将jcl的请求发送到slf4j 该版本版本号需要与slf4j-api的版本号一致 -->
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>jcl-over-slf4j</artifactId>

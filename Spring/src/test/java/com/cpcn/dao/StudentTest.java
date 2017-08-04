@@ -14,6 +14,7 @@ public class StudentTest {
 	@Resource
 	private static UserService userService;
 
+	@SuppressWarnings("resource")
 	public static void main(String[] args) {
 
 		ApplicationContext ac = new FileSystemXmlApplicationContext("E:/workspace_liu/Spring/src/main/resources/applicationContext.xml");

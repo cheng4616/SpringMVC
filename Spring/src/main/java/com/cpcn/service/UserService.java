@@ -18,7 +18,7 @@ public interface UserService {
 	 * @param password
 	 * @return
 	 */
-	public ProcessResult login(User user);
+    public ProcessResult login(User user);
 
 	/**
 	 * 注册用户

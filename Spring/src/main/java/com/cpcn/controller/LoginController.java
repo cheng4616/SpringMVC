@@ -51,7 +51,7 @@ public class LoginController {
 		return new ModelAndView("error", "message", result.getResultMsg());
 	}
 
-	@RequestMapping(value = "/addUser")
+	@RequestMapping(value = "addUser")
 	public ModelAndView addUser(String username, String password) {
 		User user = new User();
 		user.setUsername(username);
